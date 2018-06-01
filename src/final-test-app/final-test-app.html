@@ -5,6 +5,9 @@
 <link rel="import" href="../image-brian/imagen-brian.html">
 <link rel="import" href="../main-container/main-container.html">
 <link rel="import" href="../sociales-bar/sociales-bar.html">
+<link rel="import" href="../pagina-blog/pagina-blog.html">
+<link rel="import" href="../pagina-recursos/pagina-recursos.html">
+<link rel="import" href="../pagina-resumen/pagina-resumen.html">
 
 <dom-module id="final-test-app">
   <template>
@@ -67,16 +70,16 @@
           
       </div>
       <div name="Resumen">
-
+        <pagina-resumen></pagina-resumen>
       </div>
       <div name="Contacto">
 
       </div>
       <div name="Recursos">
-
+        <pagina-recursos></pagina-recursos>
       </div>
       <div name="Blog">
-
+        <pagina-blog></pagina-blog>
       </div>
     </iron-pages>
   </template>
@@ -93,7 +96,7 @@
           elementos: {
             type: Array,
             value: [
-              { "name": "Yo" }, { "name": "Resumen" }, { "name": "Contacto" }, { "name": "Recursos" }, { "name": "Blog" }
+              { "name": "Yo" }, { "name": "Resumen" }, { "name": "Recursos" }, { "name": "Blog" }
             ]
           }
         };
