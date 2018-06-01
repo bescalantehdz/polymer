@@ -1,0 +1,105 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/app-route/app-route.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../image-brian/imagen-brian.html">
+<link rel="import" href="../main-container/main-container.html">
+<link rel="import" href="../sociales-bar/sociales-bar.html">
+
+<dom-module id="final-test-app">
+  <template>
+    <style>
+      :host {}
+
+      h1 {
+        text-align: center;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+      }
+
+      ul {
+        list-style: none;
+        text-transform: capitalize;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-around;
+        padding: 20px 0;
+        width: 100%;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      a:visited{
+        color: white;
+      }
+      .nav-bar {
+        background-color: crimson;
+        color: white;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 20px;
+      }
+    </style>
+
+
+    <app-location route="{{route}}">
+    </app-location>
+    <app-route route="{{route}}" pattern="/:page" data="{{routePage}}" tail="{{subroute}}"></app-route>
+
+    <iron-selector selected="{{routePage.page}}" attr-for-selected="name" role="navigation">
+      <ul class="nav-bar">
+        <template is="dom-repeat" items="[[elementos]]" as="nave">
+          <li>
+            <a href="[[nave.name]]" name="[[nave.name]]">[[nave.name]]</a>
+          </li>
+        </template>
+      </ul>
+    </iron-selector>
+
+
+    <iron-pages selected="{{routePage.page}}" attr-for-selected="name" fallback-selection="Yo" role="main">
+      <div name="Yo">
+        <imagen-brian></imagen-brian>
+        <h1>
+          Brian Jesus Escalante Hernández</h1><br><br><br>
+    <sociales-bar></sociales-bar>
+          
+      </div>
+      <div name="Resumen">
+
+      </div>
+      <div name="Contacto">
+
+      </div>
+      <div name="Recursos">
+
+      </div>
+      <div name="Blog">
+
+      </div>
+    </iron-pages>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class FinalTestApp extends Polymer.Element {
+      static get is() { return 'final-test-app'; }
+      static get properties() {
+        return {
+          elementos: {
+            type: Array,
+            value: [
+              { "name": "Yo" }, { "name": "Resumen" }, { "name": "Contacto" }, { "name": "Recursos" }, { "name": "Blog" }
+            ]
+          }
+        };
+      }
+    }
+
+    window.customElements.define(FinalTestApp.is, FinalTestApp);
+  </script>
+</dom-module>

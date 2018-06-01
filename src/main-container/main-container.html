@@ -1,0 +1,40 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+
+<dom-module id="main-container">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+<h2>brian</h2>
+    </template>
+
+    <script>
+        /**
+         * `nav-bar`
+         * 
+         *
+         * @customElement
+         * @polymer
+         * @demo demo/index.html
+         */
+        class MainContainer extends Polymer.Element {
+            static get is() { return 'main-container'; }
+            static get properties() {
+                return {
+                    prop1: {
+                        type: Array,
+                        value: [
+                            {"nombre":"url"},
+                            {"nombre": "url1"}
+                        ]
+                    }
+                };
+            }
+        }
+
+        window.customElements.define(MainContainer.is, MainContainer);
+    </script>
+</dom-module>/

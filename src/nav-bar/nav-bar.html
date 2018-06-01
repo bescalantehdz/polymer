@@ -1,0 +1,95 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/app-route/app-route.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+
+<dom-module id="nav-bar">
+    <template>
+        <style>
+            :host {}
+
+            ul {
+                list-style: none;
+                text-transform: capitalize;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: space-around;
+                padding: 20px 0;
+                width: 100%;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            .nav-bar {
+                background-color: crimson;
+                color: white;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                font-size: 20px;
+            }
+        </style>
+
+        <app-location route="{{route}}">
+        </app-location>
+        <app-route route="{{route}}" pattern="/:page" data="{{routePage}}" tail="{{subroute}}"></app-route>
+
+        <iron-selector selected="{{routePage.page}}" attr-for-selected="name" role="navigation" class="nav-bar">
+            <ul>
+                <template is="dom-repeat" items="[[elementos]]" as="nave">
+                    <li>
+                        <a href="[[nave.name]]" name="[[nave.name]]">[[nave.name]]</a>
+                    </li>
+                </template>
+            </ul>
+        </iron-selector>
+
+
+        <iron-pages selected="{{routePage.page}}" attr-for-selected="name" fallback-selection="Yo" role="main">
+            <div name="Yo">
+                <h2>[[prop1]]!</h2>
+            </div>
+            <div name="Resumen">
+                <h2>potacase!</h2>
+            </div>
+            <div name="Contacto">
+                <h2>Generos</h2>
+            </div>
+            <div name="Recursos">
+                <h2>Lanzamientos perros</h2>
+            </div>
+            <div name="Blog">
+                <iron-ajax auto url="https://www.googleapis.com/youtube/v3/search" params='{"part":"snippet", "q":"perros", "key": "AIzaSyDO_y1ZwQ8JMyjvxSZLb2wHRwrIebLATjI", "type": "video"}'
+                    handle-as="json" on-response="handleResponse" debounce-duration="300"></iron-ajax>
+            </div>
+        </iron-pages>
+
+    </template>
+
+    <script>
+        /**
+         * `nav-bar`
+         * 
+         *
+         * @customElement
+         * @polymer
+         * @demo demo/index.html
+         */
+        class NavBar extends Polymer.Element {
+            static get is() { return 'nav-bar'; }
+            static get properties() {
+                return {
+                    elementos: {
+                        type: Array,
+                        value: [
+                            { "name": "Yo" }, { "name": "Resumen" }, { "name": "Contacto" }, { "name": "Recursos" }, { "name": "Blog" }
+                        ]
+                    }
+                };
+            }
+        }
+
+        window.customElements.define(NavBar.is, NavBar);
+    </script>
+</dom-module>

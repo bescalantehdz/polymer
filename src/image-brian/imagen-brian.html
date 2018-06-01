@@ -1,0 +1,53 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="imagen-brian">
+    <template>
+        <style>
+            :host {}
+
+            .container {
+                background: #333333;
+                display: flex;
+                justify-content: center;
+                padding: 1em 1em;
+                text-align: center;
+            }
+            img{
+                max-width: 80%;
+                border-radius: 80%;
+            }
+        </style>
+        <div class="container">
+            <div class="yo">
+                <div class="imagen">
+                    <img src="../../src/recursos/mainphoto.JPG">
+                </div>
+            </div>
+        </div>
+
+    </template>
+
+    <script>
+        /**
+         * `imagen-brian`
+         * 
+         *
+         * @customElement
+         * @polymer
+         * @demo demo/index.html
+         */
+        class ImagenBrian extends Polymer.Element {
+            static get is() { return 'imagen-brian'; }
+            static get properties() {
+                return {
+                    prop1: {
+                        type: String,
+                        value: 'imagen-brian'
+                    }
+                };
+            }
+        }
+
+        window.customElements.define(ImagenBrian.is, ImagenBrian);
+    </script>
+</dom-module>
